@@ -10,9 +10,9 @@ Installation
 
 Simply add the gem to your Gemfile
 
-    ```ruby
+```ruby
     gem 'basecamper'
-    ```
+```
 
 Configuration
 -----

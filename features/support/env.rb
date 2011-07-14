@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'active_resource'
 require 'basecamper'
 
 module BasecamperMethods

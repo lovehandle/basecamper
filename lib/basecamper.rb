@@ -22,5 +22,9 @@ module Basecamper
     def account
       Resource.find(:one, :from => "/account.xml")
     end
+
+    def configure(&block)
+      Connection.configure(&block)
+    end
   end
 end

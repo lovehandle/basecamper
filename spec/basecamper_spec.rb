@@ -10,4 +10,12 @@ describe Basecamper do
       subject.account
     end
   end
+
+  describe ".configure" do
+    it "yields a Basecamper::Connection" do
+      Basecamper.configure do |config|
+        config.should == Basecamper::Connection
+      end
+    end
+  end
 end

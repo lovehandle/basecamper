@@ -1,6 +1,8 @@
 Basecamper
 ==========
 
+[![travis](https://secure.travis-ci.org/rclosner/basecamper.png)](http://travis-ci.org/rclosner/basecamper)
+
 Basecamper is a Ruby wrapper to the 37 Signals [Basecamp API](http://developer.37signals.com/basecamp)
 
 Installation

@@ -11,10 +11,10 @@ Simply add the gem to your Gemfile
     gem 'basecamper'
 
 
-Usage
+Configuration
 -----
 
-Configuration:
+Add authentication configurations:
 
     Basecamper.configure do |config|
       config.token   = '123abc'
@@ -33,7 +33,9 @@ Use SSL?
     Basecamper.configure {|c| c.use_ssl = true }
 
 
-That's it. You're done!
+Usage
+-----
+
 
 View your account info:
 

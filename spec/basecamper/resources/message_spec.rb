@@ -17,5 +17,12 @@ module Basecamper
         message.should respond_to(:project)
       end
     end
+
+    describe ".archived" do
+      it "returns archived messages" do
+        subject.should_receive(:find).with(:all, :from => :archive, :params => {})
+        subject.archived(:params => {})
+      end
+    end
   end
 end

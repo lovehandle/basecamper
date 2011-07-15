@@ -31,7 +31,7 @@ Basecamper also enables one to authenticate with one's username and password:
 ```ruby
     Basecamper.configure do |config|
       config.user      = '123abc'
-      config.password  = 'dummy.basecamphq.com'
+      config.password  = 'secret'
     end
 ```
 
@@ -45,42 +45,45 @@ Usage
 -----
 
 
-View your account info:
+View account info:
 
 ```ruby
     Basecamper.account
 ```
 
-Return the current user:
+Return current user:
 
 ```ruby
     Basecamper::Person.me
 ```
 
-Returns resource index:
+Basic operations:
 
 ```ruby
     Basecamper::Project.all
     returns:  [#<Basecamper::Project:0x266e458 @attributes={"company"=>..}>]
+
+    Basecamper::Project.first
+    returns:  #<Basecamper::Project:0x266e458 @attributes={"company"=>..}>
 ```
 
-Utilize has_many assocations:
-
-```ruby
-    project  = Basecamper::Project.find(:first)
-    messages = project.messages
-```
-
-Utilize belongs_to associations:
-
-```ruby
-    message = messages.first
-    message.project
-```
-
-Add query params.
+Advanced queries:
     
 ```ruby
     Basecamper::TodoList.all(:params => { :project_id => 1234 })
     Basecamper::TodoList.find(:all, :params => { :project_id => 1234, :responsible_party => 9124 })
+```
+
+Child assocations:
+
+```ruby
+    project = Basecamper::Project.find(123)
+    project.messages
+```
+
+Parent associations:
+
+```ruby
+    message = Basecamper::Message.find(123)
+    message.project
 ```

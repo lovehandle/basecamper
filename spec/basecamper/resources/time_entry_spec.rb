@@ -19,7 +19,7 @@ module Basecamper
     describe ".report" do
       it "returns time entry report" do
         subject.should_receive(:find).with(:all, :from => :report, :params => {})
-        subject.remote(:params => {})
+        subject.report(:params => {})
       end
     end
   end

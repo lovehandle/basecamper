@@ -4,8 +4,8 @@ module Basecamper
     parent_resources :project, :todo_item
 
     class << self
-      def remote(options = {})
-        all(:from => :remote, :params => options)
+      def report(options = {})
+        find(:all, {:from => :report}.merge(options))
       end
     end
   end

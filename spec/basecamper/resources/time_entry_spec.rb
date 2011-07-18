@@ -16,9 +16,9 @@ module Basecamper
       end
     end
 
-    describe ".remote" do
-      it "calls remote" do
-        subject.should_receive(:all).with(:from => :remote, :params => {})
+    describe ".report" do
+      it "returns time entry report" do
+        subject.should_receive(:find).with(:all, :from => :report, :params => {})
         subject.remote(:params => {})
       end
     end

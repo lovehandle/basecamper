@@ -63,22 +63,13 @@ module Basecamper
         Basecamper::Connection.stub(:domain).and_return(domain)
         Basecamper::Connection.stub(:user).and_return(user)
         Basecamper::Connection.stub(:password).and_return(password)
+        Basecamper::Connection.stub(:use_oauth).and_return(false)
 
         subject.stub(:old_find)
       end
 
       it "sets the site to Connection.domain" do
         subject.should_receive(:site=).with(domain)
-        subject.find
-      end
-
-      it "sets the user to Connection.user" do
-        subject.should_receive(:user=).with(user)
-        subject.find
-      end
-
-      it "sets the password to Connection.password" do
-        subject.should_receive(:password=).with(password)
         subject.find
       end
 
@@ -112,6 +103,45 @@ module Basecamper
     describe ".prefix_source" do
       it "equals '/'" do
         subject.prefix_source.should == '/'
+      end
+    end
+
+    describe ".set_authorization" do
+      context "when using http basic" do
+
+        let(:user)     { 'dummy' }
+        let(:password) { 'secret' }
+
+        before(:each) do
+          Basecamper::Connection.stub(:use_oauth).and_return(false)
+          Basecamper::Connection.stub(:user).and_return(user)
+          Basecamper::Connection.stub(:password).and_return(password)
+        end
+
+        it "sets the user to Connection.user" do
+          subject.should_receive(:user=).with(user)
+          subject.send(:set_authentication)
+        end
+
+        it "sets the password to Connection.password" do
+          subject.should_receive(:password=).with(password)
+          subject.send(:set_authentication)
+        end
+      end
+
+      context "when using oauth" do
+
+        let(:token) { '123456' }
+
+        before(:each) do
+          Basecamper::Connection.stub(:use_oauth).and_return(true)
+          Basecamper::Connection.stub(:token).and_return(token)
+        end
+
+        it "sets a custom header with the oauth credentials" do
+          subject.send(:set_authentication)
+          subject.headers['authorization'].should == "Bearer '#{token}'"
+        end
       end
     end
   end

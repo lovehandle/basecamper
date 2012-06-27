@@ -39,6 +39,20 @@ module Basecamper
       end
     end
 
+    describe ".use_oauth=" do
+      it "sets @use_oauth to the passed value" do
+        subject.use_oauth = true
+        subject.instance_variable_get(:@use_oauth).should be_true
+      end
+    end
+
+    describe ".use_oauth" do
+      it "returns the value of @use_oauth" do
+        subject.instance_variable_set(:@use_oauth, true)
+        subject.use_oauth.should be_true
+      end
+    end
+
     describe ".user=" do
       it "sets @user to the passed value" do
         subject.user = user

@@ -35,6 +35,15 @@ Basecamper also enables one to authenticate with one's username and password:
     end
 ```
 
+Authentication using OAuth is also supported:
+
+```ruby
+    Basecamper.configure do |config|
+      config.use_oauth  = true
+      config.token      = 'abc123'
+    end
+```
+
 Use SSL?
     
 ```ruby

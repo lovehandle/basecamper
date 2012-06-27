@@ -8,9 +8,8 @@ module Basecamper
       public
 
       def find(*args)
-        self.site     = Basecamper::Connection.domain
-        self.user     = Basecamper::Connection.user
-        self.password = Basecamper::Connection.password
+        self.site = Basecamper::Connection.domain
+        self.set_authentication
 
         old_find(*args)
       end
@@ -56,6 +55,17 @@ module Basecamper
 
       def prefix_source
         '/'
+      end
+
+      protected
+
+      def set_authentication
+        if Basecamper::Connection.use_oauth
+          self.headers['authorization'] = "Bearer '#{Basecamper::Connection.token}'"
+        else
+          self.user     = Basecamper::Connection.user
+          self.password = Basecamper::Connection.password
+        end
       end
 
     end

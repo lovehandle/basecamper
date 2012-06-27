@@ -96,3 +96,7 @@ Parent associations:
     message = Basecamper::Message.find(123)
     message.project
 ```
+
+Credits
+-------
+* Carlos Ramirez III ([carlosramireziii][https://github.com/carlosramireziii])

@@ -2,7 +2,7 @@ module Basecamper
   class Connection
     class << self
 
-      attr_accessor :token, :use_ssl
+      attr_accessor :token, :use_ssl, :use_oauth
       attr_writer :user, :password, :domain
 
       def user

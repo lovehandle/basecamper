@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   }.each {|lib, version| s.add_runtime_dependency lib, version }
 
   {
-    'bundler'             => '~> 1.0.0',
     'cucumber'            => '~> 0.10.0',
     'rake'                => '~> 0.8.7',
     'rspec'               => '~> 2.5.0',

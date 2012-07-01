@@ -99,4 +99,4 @@ Parent associations:
 
 Credits
 -------
-* Carlos Ramirez III ([carlosramireziii][https://github.com/carlosramireziii])
+* Carlos Ramirez III ([carlosramireziii](https://github.com/carlosramireziii))
